@@ -21,3 +21,5 @@ class RelayPoint(models.Model):
 
     def __str__(self):
         return f"{self.address} ({self.get_status_display()})"
+
+

@@ -1,4 +1,5 @@
 from rest_framework import viewsets, permissions
+
 from rest_framework.generics import CreateAPIView
 from .models import RelayPoint
 from .serializers import RelayPointSerializer, RelayOperatorRegisterSerializer

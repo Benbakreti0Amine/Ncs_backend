@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'relay',
     'vendors',
     'tracking',
+    'employment',
+    'logistics',
 ]
 
 MIDDLEWARE = [
