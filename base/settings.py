@@ -47,11 +47,10 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'base.urls'
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
+    "DEFAULT_AUTHENTICATION_CLASSES": [],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
 }
 
 SIMPLE_JWT = {
@@ -151,6 +150,9 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
     'http://127.0.0.1:8000',
     'http://192.168.143.79:8000',
+]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # or whatever port your React dev server uses
 ]
 
 

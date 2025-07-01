@@ -44,11 +44,10 @@ class LoginView(APIView):
 
         if user is not None:
             tokens = create_jwt_pair_for_user(user)
-
-            response = {"message": "Login Succesfull", "token": tokens}#,"id":user.id
+            from .serializers import UserSerializer
+            user_data = UserSerializer(user).data
+            response = {"message": "Login Succesfull", "token": tokens, "user": user_data}
             return Response(data=response, status=status.HTTP_200_OK)
-        
-
         else:
             error_response = {
                 "status": status.HTTP_401_UNAUTHORIZED,
