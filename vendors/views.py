@@ -17,7 +17,7 @@ class VendorRegisterView(CreateAPIView):
 
 class VendorOrderViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
 
     def get_queryset(self):
         return Order.objects.filter(vendor=self.request.user)
@@ -26,7 +26,7 @@ class VendorOrderViewSet(viewsets.ModelViewSet):
         serializer.save(vendor=self.request.user)
 
 class VendorStatsView(APIView):
-    permission_classes = [IsAuthenticated]
+
 
     def get(self, request):
         vendor = request.user

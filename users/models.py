@@ -49,7 +49,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     numero_de_telephone = models.CharField(max_length=15, unique=True)
-
+    id_card_image = models.ImageField(upload_to='id_cards/', null=True, blank=True)
+    id_number = models.CharField(max_length=50, null=True, blank=True)
+    id_expiry = models.DateField(null=True, blank=True)
+    VERIFICATION_STATUS_CHOICES = [
+        ('PENDING', 'Pending'),
+        ('VERIFIED', 'Verified'),
+        ('REJECTED', 'Rejected'),
+    ]
+    verification_status = models.CharField(max_length=10, choices=VERIFICATION_STATUS_CHOICES, default='PENDING')
     
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

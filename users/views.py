@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.request import Request
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated, BasePermission
+from rest_framework.parsers import MultiPartParser, FormParser
 
 class ListCreateUser(ListCreateAPIView):
     queryset = User.objects.all()
@@ -60,7 +61,6 @@ class LoginView(APIView):
         return Response(data=content, status=status.HTTP_200_OK)
 
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         request.auth.delete()
@@ -77,5 +77,6 @@ class IsAdminOrStaff(BasePermission):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAdminOrStaff]
+    parser_classes = (MultiPartParser, FormParser)
+
 

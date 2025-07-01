@@ -84,12 +84,10 @@ class PackageViewSet(viewsets.ModelViewSet):
 class DeliveryRouteViewSet(viewsets.ModelViewSet):
     queryset = DeliveryRoute.objects.all()
     serializer_class = DeliveryRouteSerializer
-    permission_classes = [IsAdminOrStaff]
 
 class DeliveryStatusViewSet(viewsets.ModelViewSet):
     queryset = DeliveryStatus.objects.all()
     serializer_class = DeliveryStatusSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -104,7 +102,6 @@ class DeliveryStatusViewSet(viewsets.ModelViewSet):
 class PackageHistoryViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = PackageHistory.objects.all()
     serializer_class = PackageHistorySerializer
-    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -119,10 +116,8 @@ class PackageHistoryViewSet(viewsets.ReadOnlyModelViewSet):
 class DeliveryNotificationViewSet(viewsets.ModelViewSet):
     queryset = DeliveryNotification.objects.all()
     serializer_class = DeliveryNotificationSerializer
-    permission_classes = [IsAdminOrStaff]
 
 class LogisticsDashboardView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
         user = request.user

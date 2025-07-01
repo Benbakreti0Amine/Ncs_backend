@@ -14,7 +14,6 @@ from rest_framework.permissions import IsAuthenticated
 class RelayPointViewSet(viewsets.ModelViewSet):
     queryset = RelayPoint.objects.all()
     serializer_class = RelayPointSerializer
-    permission_classes = [permissions.IsAdminUser]
     
     #te3 admin hadiiii
 
@@ -23,7 +22,7 @@ class RelayOperatorRegisterView(CreateAPIView):
 
 class RelayParcelViewSet(viewsets.ModelViewSet):
     serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
+
 
     def get_queryset(self):
         try:
@@ -33,7 +32,7 @@ class RelayParcelViewSet(viewsets.ModelViewSet):
             return Order.objects.none()
 
 class RelayProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+
 
     def get(self, request):
         user = request.user
@@ -50,7 +49,7 @@ class RelayProfileView(APIView):
             return Response({'error': 'Relay point not found'}, status=404)
 
 class RelayEarningsView(APIView):
-    permission_classes = [IsAuthenticated]
+
 
     def get(self, request):
         user = request.user

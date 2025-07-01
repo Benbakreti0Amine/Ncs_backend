@@ -9,7 +9,6 @@ from users.views import IsAdminOrStaff
 class EmploymentPostViewSet(viewsets.ModelViewSet):
     queryset = EmploymentPost.objects.all()
     serializer_class = EmploymentPostSerializer
-    permission_classes = [IsAdminOrStaff]
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -17,7 +16,6 @@ class EmploymentPostViewSet(viewsets.ModelViewSet):
 class RelayApplicationViewSet(viewsets.ModelViewSet):
     queryset = RelayApplication.objects.all()
     serializer_class = RelayApplicationSerializer
-    permission_classes = [IsAdminOrStaff]
 
     def perform_update(self, serializer):
         serializer.save(reviewed_by=self.request.user)
